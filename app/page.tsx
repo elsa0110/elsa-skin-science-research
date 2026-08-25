@@ -19,6 +19,29 @@ type EvidenceRecord = {
   funding: string;
 };
 
+type IngredientFamily = {
+  id: string;
+  name: string;
+  compounds: string;
+  evidenceStatus: string;
+  focus: string;
+  boundary: string;
+  product: {
+    name: string;
+    concentration: string;
+    format: string;
+    targets: string;
+    inci: string;
+    source: string;
+  };
+  sources: Array<{
+    sourceType: string;
+    record: string;
+    contribution: string;
+    url: string;
+  }>;
+};
+
 const records: EvidenceRecord[] = [
   {
     id: "33984185",
@@ -182,6 +205,213 @@ const records: EvidenceRecord[] = [
   },
 ];
 
+const ingredientFamilies: IngredientFamily[] = [
+  {
+    id: "retinoids",
+    name: "Retinoids",
+    compounds: "Retinol · retinal · tretinoin · adapalene · retinoid esters",
+    evidenceStatus: "1 product · 2 research sources",
+    focus: "For adults with photoaged skin, which topical retinoid forms and concentrations improve fine lines or uneven pigmentation compared with vehicle?",
+    boundary: "Prescription tretinoin, adapalene, retinal, and over-the-counter retinol are related molecules—not interchangeable interventions. Evidence for one cannot automatically be assigned to another concentration or formula.",
+    product: {
+      name: "The Ordinary Retinol 0.2% in Squalane",
+      concentration: "0.2% retinol",
+      format: "Water-free serum",
+      targets: "Early signs of aging · texture · uneven tone",
+      inci: "Squalane, Caprylic/Capric Triglyceride, Simmondsia Chinensis (Jojoba) Seed Oil, Retinol, Solanum Lycopersicum (Tomato) Fruit Extract, Rosmarinus Officinalis (Rosemary) Leaf Extract, Hydroxymethoxyphenyl Decanone, BHT.",
+      source: "https://theordinary.com/en-us/retinol-02-in-squalane-serum-100439.html",
+    },
+    sources: [
+      {
+        sourceType: "Manufacturer record",
+        record: "Retinol 0.2% in Squalane",
+        contribution: "Current U.S. label, concentration, format, targets, and ingredient list",
+        url: "https://theordinary.com/en-us/retinol-02-in-squalane-serum-100439.html",
+      },
+      {
+        sourceType: "Systematic review",
+        record: "PMID 34980969",
+        contribution: "Nine vehicle-controlled OTC vitamin A trials; positive retinol findings were judged weak and methodologically limited",
+        url: "https://pubmed.ncbi.nlm.nih.gov/34980969/",
+      },
+      {
+        sourceType: "Clinical guideline",
+        record: "AAD acne guideline",
+        contribution: "Supports topical retinoids for acne while keeping prescription guidance separate from cosmetic product records",
+        url: "https://www.aad.org/member/clinical-quality/guidelines/acne",
+      },
+    ],
+  },
+  {
+    id: "niacinamide",
+    name: "Niacinamide",
+    compounds: "Niacinamide · nicotinamide · vitamin B3",
+    evidenceStatus: "1 product · 2 study records",
+    focus: "At what topical concentrations, and for which outcomes, has niacinamide been evaluated in acne-prone or hyperpigmented skin?",
+    boundary: "A 10% cosmetic serum is not the same intervention as a 4% trial formula or a niacinamide-plus-benzoyl-peroxide regimen. Concentration, vehicle, co-ingredients, and condition stay explicit.",
+    product: {
+      name: "The Ordinary Niacinamide 10% + Zinc 1%",
+      concentration: "10% niacinamide · 1% zinc PCA",
+      format: "Water-based serum",
+      targets: "Oil control · brightness · texture",
+      inci: "Aqua (Water), Niacinamide, Pentylene Glycol, Zinc PCA, Dimethyl Isosorbide, Tamarindus Indica Seed Gum, Xanthan Gum, Isoceteth-20, Ethoxydiglycol, Phenoxyethanol, Chlorphenesin.",
+      source: "https://theordinary.com/en-us/niacinamide-10-zinc-1-serum-100436.html",
+    },
+    sources: [
+      {
+        sourceType: "Manufacturer record",
+        record: "Niacinamide 10% + Zinc 1%",
+        contribution: "Current U.S. label, concentrations, water-based format, targets, and INCI",
+        url: "https://theordinary.com/en-us/niacinamide-10-zinc-1-serum-100436.html",
+      },
+      {
+        sourceType: "Split-face trial",
+        record: "PMID 21822427",
+        contribution: "4% niacinamide versus hydroquinone for melasma; small eight-week study",
+        url: "https://pubmed.ncbi.nlm.nih.gov/21822427/",
+      },
+      {
+        sourceType: "Split-face trial",
+        record: "PMID 34804354",
+        contribution: "5% niacinamide added to benzoyl peroxide for acne; combination design limits ingredient attribution",
+        url: "https://pubmed.ncbi.nlm.nih.gov/34804354/",
+      },
+    ],
+  },
+  {
+    id: "azelaic-acid",
+    name: "Azelaic acid",
+    compounds: "Azelaic acid · 10–20% topical formulations",
+    evidenceStatus: "1 product · 2 research sources",
+    focus: "How does topical azelaic acid perform for acne, rosacea, or melasma within each condition-specific outcome set?",
+    boundary: "Evidence must remain separated by condition, concentration, vehicle, comparator, and outcome. A multi-condition review does not create one universal ingredient verdict.",
+    product: {
+      name: "The Ordinary Azelaic Acid Suspension 10%",
+      concentration: "10% azelaic acid",
+      format: "Cream-like suspension",
+      targets: "Texture · dullness · redness · uneven tone",
+      inci: "Aqua (Water), Isodecyl Neopentanoate, Dimethicone, Azelaic Acid, Dimethicone/Bis-Isobutyl PPG-20 Crosspolymer, Dimethyl Isosorbide, Hydroxyethyl Acrylate/Sodium Acryloyldimethyl Taurate Copolymer, Polysilicone-11, Isohexadecane, Tocopherol, Trisodium Ethylenediamine Disuccinate, Isoceteth-20, Polysorbate 60, Triethanolamine, Ethoxydiglycol, Phenoxyethanol, Chlorphenesin.",
+      source: "https://theordinary.com/en-us/azelaic-acid-suspension-10-exfoliator-100407.html",
+    },
+    sources: [
+      {
+        sourceType: "Manufacturer record",
+        record: "Azelaic Acid Suspension 10%",
+        contribution: "Current U.S. label, concentration, suspension format, targets, and INCI",
+        url: "https://theordinary.com/en-us/azelaic-acid-suspension-10-exfoliator-100407.html",
+      },
+      {
+        sourceType: "Systematic review",
+        record: "PMID 37550898",
+        contribution: "43 randomized trials across acne, rosacea, and melasma with heterogeneous strengths and outcomes",
+        url: "https://pubmed.ncbi.nlm.nih.gov/37550898/",
+      },
+      {
+        sourceType: "Clinical guideline",
+        record: "AAD acne guideline",
+        contribution: "Lists azelaic acid among recommended topical acne therapies",
+        url: "https://www.aad.org/member/clinical-quality/guidelines/acne",
+      },
+    ],
+  },
+  {
+    id: "salicylic-acid",
+    name: "Salicylic acid",
+    compounds: "Salicylic acid · beta hydroxy acid (BHA)",
+    evidenceStatus: "1 product · 1 guideline source",
+    focus: "For mild-to-moderate acne, what outcomes improve with topical salicylic acid compared with vehicle or other topical therapies?",
+    boundary: "An OTC acne-drug label and a cosmetic exfoliation claim are different evidence objects. Active concentration, inactive ingredients, comparator, and adverse effects require separate fields.",
+    product: {
+      name: "The Ordinary Salicylic Acid 2% Solution",
+      concentration: "2% salicylic acid",
+      format: "Water-based acne serum",
+      targets: "Acne · congestion · textural irregularities",
+      inci: "Active: Salicylic Acid (2%). Inactive: Cocamidopropyl Dimethylamine, Chlorphenesin, Citric Acid, Hydroxyethylcellulose, Phenoxyethanol, Polysorbate 20, Saccharide Isomerate, Sodium Citrate, Sodium Hydroxide, Water.",
+      source: "https://theordinary.com/en-us/salicylic-acid-2-solution-acne-control-100098.html",
+    },
+    sources: [
+      {
+        sourceType: "Manufacturer record",
+        record: "Salicylic Acid 2% Solution",
+        contribution: "Current U.S. active-drug concentration, inactive ingredients, format, targets, and warnings",
+        url: "https://theordinary.com/en-us/salicylic-acid-2-solution-acne-control-100098.html",
+      },
+      {
+        sourceType: "Clinical guideline",
+        record: "AAD acne guideline",
+        contribution: "Lists salicylic acid among recommended topical therapies for acne",
+        url: "https://www.aad.org/member/clinical-quality/guidelines/acne",
+      },
+    ],
+  },
+  {
+    id: "vitamin-c",
+    name: "Vitamin C",
+    compounds: "L-ascorbic acid · vitamin C derivatives",
+    evidenceStatus: "1 product · 1 review source",
+    focus: "Which topical vitamin C formulations have been tested for wrinkles, photodamage, or melasma, and can results be attributed to vitamin C alone?",
+    boundary: "Ascorbic acid percentage, derivative, pH, stability, vehicle, co-ingredients, and outcome all affect interpretation. Evidence for a combination formula does not isolate vitamin C.",
+    product: {
+      name: "The Ordinary Vitamin C Suspension 23% + HA Spheres 2%",
+      concentration: "23% L-ascorbic acid · HA spheres",
+      format: "Water-free suspension",
+      targets: "Dullness · antioxidant support · uneven tone",
+      inci: "Ascorbic Acid, Squalane, Isodecyl Neopentanoate, Isononyl Isononanoate, Coconut Alkanes, Ethylene/Propylene/Styrene Copolymer, Ethylhexyl Palmitate, Silica Dimethyl Silylate, Sodium Hyaluronate, Glucomannan, Coco-Caprylate/Caprate, Butylene/Ethylene/Styrene Copolymer, Acrylates/Ethylhexyl Acrylate Crosspolymer, Trihydroxystearin, BHT.",
+      source: "https://theordinary.com/en-us/vitamin-c-suspension-23-ha-spheres-2-vitamin-c-100451.html",
+    },
+    sources: [
+      {
+        sourceType: "Manufacturer record",
+        record: "Vitamin C Suspension 23% + HA Spheres 2%",
+        contribution: "Current U.S. label, concentration, water-free format, targets, and INCI",
+        url: "https://theordinary.com/en-us/vitamin-c-suspension-23-ha-spheres-2-vitamin-c-100451.html",
+      },
+      {
+        sourceType: "Systematic review",
+        record: "PMID 37683066",
+        contribution: "Seven wrinkle studies; all used vitamin C with other ingredients or mechanisms, limiting attribution",
+        url: "https://pubmed.ncbi.nlm.nih.gov/37683066/",
+      },
+    ],
+  },
+  {
+    id: "barrier-lipids",
+    name: "Barrier lipids",
+    compounds: "Ceramides · sphingolipids · glycolipids · fatty acids",
+    evidenceStatus: "1 product · 2 study records",
+    focus: "Do ceramide- or lipid-containing moisturizer regimens improve transepidermal water loss, hydration, or clinical severity versus a comparator?",
+    boundary: "A product may use phytoceramides, glycosphingolipids, or broader lipid systems. Product-level trials cannot identify which single lipid produced an observed effect.",
+    product: {
+      name: "The Ordinary Natural Moisturizing Factors + PhytoCeramides",
+      concentration: "Concentrations not disclosed on label",
+      format: "Cream moisturizer",
+      targets: "Dryness · barrier support",
+      inci: "Aqua (Water), Caprylic/Capric Triglyceride, Cetyl Ethylhexanoate, Isodecyl Neopentanoate, Glycerin, Propanediol, Polyglyceryl-6 Polyricinoleate, Hydrogenated Vegetable Oil, Polyglyceryl-2 Isostearate, Isosorbide Dicaprylate, Disteardimonium Hectorite, Phytosteryl Canola Glycerides, Glycosphingolipids, Glycolipids, Linoleic Acid, Oleic Acid, Palmitic Acid, Stearic Acid, Arginine, Glycine, Alanine, Serine, Proline, Threonine, Glutamic Acid, Lysine HCl, Betaine, Xylitylglucoside, Anhydroxylitol, Xylitol, Glucose, Maltose, Fructose, Trehalose, Sodium PCA, PCA, Sodium Lactate, Urea, Allantoin, Sodium Hyaluronate, Lecithin, Triolein, Dimethyl Isosorbide, Pentylene Glycol, Tocopherol, Hydroxymethoxyphenyl Decanone, Citric Acid, Trisodium Ethylenediamine Disuccinate, Magnesium Sulfate, Sodium Chloride, Sodium Hydroxide, Phenoxyethanol, Chlorphenesin.",
+      source: "https://theordinary.com/en-us/natural-moisturizing-factors-phytoceramides-moisturizer-100610.html",
+    },
+    sources: [
+      {
+        sourceType: "Manufacturer record",
+        record: "Natural Moisturizing Factors + PhytoCeramides",
+        contribution: "Current U.S. label, moisturizer format, targets, and full INCI",
+        url: "https://theordinary.com/en-us/natural-moisturizing-factors-phytoceramides-moisturizer-100610.html",
+      },
+      {
+        sourceType: "Split-site trial",
+        record: "PMID 31585489",
+        contribution: "Ceramide moisturizer versus hydrophilic cream in 24 adults with xerosis",
+        url: "https://pubmed.ncbi.nlm.nih.gov/31585489/",
+      },
+      {
+        sourceType: "Randomized trial",
+        record: "PMID 33984185",
+        contribution: "Ceramide regimen versus placebo regimen in adults with moderate eczema",
+        url: "https://pubmed.ncbi.nlm.nih.gov/33984185/",
+      },
+    ],
+  },
+];
+
 const typeColors: Record<EvidenceRecord["factorType"], string> = {
   Topical: "var(--teal)",
   Diet: "var(--gold)",
@@ -225,6 +455,147 @@ function EvidenceCard({ record }: { record: EvidenceRecord }) {
   );
 }
 
+function IngredientCatalogue() {
+  const [activeId, setActiveId] = useState(ingredientFamilies[0].id);
+  const [catalogueQuery, setCatalogueQuery] = useState("");
+
+  const visibleFamilies = useMemo(() => {
+    const normalized = catalogueQuery.trim().toLowerCase();
+    if (!normalized) return ingredientFamilies;
+    return ingredientFamilies.filter((family) => [
+      family.name,
+      family.compounds,
+      family.product.name,
+      family.product.inci,
+      family.product.targets,
+    ].join(" ").toLowerCase().includes(normalized));
+  }, [catalogueQuery]);
+
+  const activeFamily = visibleFamilies.find((family) => family.id === activeId)
+    ?? visibleFamilies[0]
+    ?? ingredientFamilies[0];
+
+  return (
+    <section className="section catalogue-section" id="catalogue">
+      <div className="catalogue-heading">
+        <div>
+          <p className="eyebrow">Ingredient evidence index</p>
+          <h2>Ingredient catalogue</h2>
+        </div>
+        <p>
+          Product labels document what a formulation contains. Research records document what
+          was tested. This catalogue links both without treating a brand page as proof of efficacy.
+        </p>
+      </div>
+
+      <div className="catalogue-toolbar">
+        <label>
+          <span>Search the catalogue</span>
+          <input
+            value={catalogueQuery}
+            onChange={(event) => setCatalogueQuery(event.target.value)}
+            placeholder="Search retinol, acne, ceramides, INCI…"
+          />
+        </label>
+        <div className="catalogue-count" aria-live="polite">
+          <strong>{visibleFamilies.length}</strong>
+          <span>families shown</span>
+        </div>
+        <div className="catalogue-date">
+          <span>Product labels checked</span>
+          <strong>25 Aug 2026 · U.S. pages</strong>
+        </div>
+      </div>
+
+      {visibleFamilies.length > 0 ? (
+        <div className="catalogue-layout">
+          <aside className="family-index" aria-label="Ingredient families">
+            <p>Ingredient families</p>
+            {visibleFamilies.map((family, index) => (
+              <button
+                type="button"
+                key={family.id}
+                aria-pressed={family.id === activeFamily.id}
+                onClick={() => setActiveId(family.id)}
+              >
+                <span className="family-number">{String(index + 1).padStart(2, "0")}</span>
+                <span><strong>{family.name}</strong><small>{family.evidenceStatus}</small></span>
+              </button>
+            ))}
+          </aside>
+
+          <article className="ingredient-record">
+            <header className="ingredient-header">
+              <p className="eyebrow">Ingredient family record</p>
+              <h3>{activeFamily.name}</h3>
+              <p className="ingredient-taxonomy">{activeFamily.compounds}</p>
+              <div className="research-boundary"><strong>Research boundary.</strong> {activeFamily.boundary}</div>
+            </header>
+
+            <div className="ingredient-overview">
+              <div>
+                <span className="field-label">Focused evidence question</span>
+                <p>{activeFamily.focus}</p>
+              </div>
+              <div>
+                <span className="field-label">Product formulation record</span>
+                <h4>{activeFamily.product.name}</h4>
+                <p>Used to document formulation context only—not as an endorsement or clinical-evidence record.</p>
+                <a href={activeFamily.product.source} target="_blank" rel="noreferrer">Open manufacturer record <ArrowIcon /></a>
+              </div>
+            </div>
+
+            <dl className="product-facts">
+              <div><dt>Labeled strength</dt><dd>{activeFamily.product.concentration}</dd></div>
+              <div><dt>Format</dt><dd>{activeFamily.product.format}</dd></div>
+              <div><dt>Manufacturer targets</dt><dd>{activeFamily.product.targets}</dd></div>
+            </dl>
+
+            <div className="inci-block">
+              <div>
+                <span className="field-label">Current ingredient list (INCI)</span>
+                <p>Transcribed from the linked U.S. manufacturer page. Formulas can vary by date and region; packaging remains the final reference.</p>
+              </div>
+              <code>{activeFamily.product.inci}</code>
+            </div>
+
+            <div className="source-ledger">
+              <div className="ledger-heading">
+                <h4>Source ledger</h4>
+                <span>{activeFamily.sources.length} linked records</span>
+              </div>
+              <div className="table-wrap">
+                <table>
+                  <thead><tr><th>Source class</th><th>Record</th><th>What it contributes</th><th>Link</th></tr></thead>
+                  <tbody>
+                    {activeFamily.sources.map((source) => (
+                      <tr key={`${activeFamily.id}-${source.record}`}>
+                        <td>{source.sourceType}</td>
+                        <td>{source.record}</td>
+                        <td>{source.contribution}</td>
+                        <td><a href={source.url} target="_blank" rel="noreferrer" aria-label={`Open ${source.record}`}>Open ↗</a></td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </article>
+        </div>
+      ) : (
+        <p className="empty-state">No ingredient families match that search.</p>
+      )}
+
+      <div className="catalogue-schema" aria-label="Catalogue data model">
+        <div><span>01</span><strong>Ingredient family</strong><small>controlled taxonomy</small></div>
+        <div><span>02</span><strong>Product version</strong><small>dated label + INCI</small></div>
+        <div><span>03</span><strong>Study record</strong><small>design + population + outcome</small></div>
+        <div><span>04</span><strong>Source link</strong><small>provenance + limitations</small></div>
+      </div>
+    </section>
+  );
+}
+
 export default function Home() {
   const [concern, setConcern] = useState("All concerns");
   const [factorType, setFactorType] = useState("All types");
@@ -252,12 +623,13 @@ export default function Home() {
           <span><strong>Skin Science</strong><small>Research Lab</small></span>
         </a>
         <div className="nav-links">
+          <a href="#catalogue">Ingredients</a>
           <a href="#evidence">Evidence</a>
           <a href="#case-study">Case study</a>
           <a href="#methods">Methods</a>
           <a href="#about">About</a>
         </div>
-        <a className="nav-cta" href="#evidence">Explore dataset</a>
+        <a className="nav-cta" href="#catalogue">Explore catalogue</a>
       </nav>
 
       <section className="hero" id="top">
@@ -265,12 +637,12 @@ export default function Home() {
           <p className="eyebrow">Student-led research · curated seed release 01</p>
           <h1>Dermatology evidence map.</h1>
           <p className="hero-lede">
-            Ten study-level records covering topical products, habits, diet, supplements,
-            and clinical guidance. Each record preserves design, population, outcome,
-            limitation, source, and disclosure context.
+            A student-built evidence map connecting ingredient families, current product labels,
+            and study-level dermatology records. Every claim keeps its design, population,
+            formulation, limitation, and source visible.
           </p>
           <div className="hero-actions">
-            <a className="primary-button" href="#evidence">Explore verified records <span>↓</span></a>
+            <a className="primary-button" href="#catalogue">Open ingredient catalogue <span>↓</span></a>
             <a className="text-link" href="#methods">Read the methodology <ArrowIcon /></a>
           </div>
           <div className="integrity-note">
@@ -293,11 +665,13 @@ export default function Home() {
       </section>
 
       <section className="metric-strip" aria-label="Project metrics">
-        <div><strong>{records.length}</strong><span>verified source records</span></div>
-        <div><strong>{new Set(records.map((r) => r.factor)).size}</strong><span>factors mapped</span></div>
-        <div><strong>{new Set(records.map((r) => r.concern)).size}</strong><span>research outcomes</span></div>
+        <div><strong>{ingredientFamilies.length}</strong><span>ingredient families</span></div>
+        <div><strong>{ingredientFamilies.length}</strong><span>dated product records</span></div>
+        <div><strong>{records.length}</strong><span>study-level records</span></div>
         <div><strong>100%</strong><span>records linked to source</span></div>
       </section>
+
+      <IngredientCatalogue />
 
       <section className="section evidence-section" id="evidence">
         <div className="section-heading">
@@ -466,11 +840,11 @@ export default function Home() {
             I designed and built this project to study how dermatology claims can be converted
             into structured, inspectable data. I framed the research questions, selected the seed
             literature, extracted study-level fields, documented limitations and disclosures,
-            and developed the public interface.
+            added dated manufacturer-label records, and developed the public interface.
           </p>
           <div className="about-responsibilities">
             <article><span>Research</span><p>Question framing, source selection, manual extraction, and cautious interpretation.</p></article>
-            <article><span>Data science</span><p>Schema design, controlled categories, validation rules, filtering, and comparative summaries.</p></article>
+            <article><span>Data science</span><p>Relational schema design, controlled categories, validation rules, search, filtering, and comparative summaries.</p></article>
             <article><span>Development</span><p>Python/pandas prototype followed by an accessible React and Next.js research interface.</p></article>
           </div>
           <p className="accountability-note">
@@ -486,11 +860,12 @@ export default function Home() {
           <strong>Seed 01</strong>
           <dl>
             <div><dt>Literature checked</dt><dd>25 Aug 2026</dd></div>
-            <div><dt>Record status</dt><dd>Source-linked</dd></div>
+            <div><dt>Record status</dt><dd>Source-linked · versioned</dd></div>
             <div><dt>Expert review</dt><dd>Not yet completed</dd></div>
             <div><dt>Medical use</dt><dd>Not appropriate</dd></div>
           </dl>
-          <a href="/skin-science-evidence-seed.csv" download>Download research data ↓</a>
+          <a href="/skin-science-evidence-seed.csv" download>Download study records ↓</a>
+          <a href="/ingredient-formulation-catalogue.csv" download>Download ingredient catalogue ↓</a>
         </aside>
       </section>
 
