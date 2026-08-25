@@ -50,7 +50,7 @@ const records: EvidenceRecord[] = [
     limitation: "Small sample, narrow population, and product-level evidence cannot isolate one ingredient.",
     source: "https://pubmed.ncbi.nlm.nih.gov/31585489/",
     citation: "Lueangarun S, et al. Dermatol Ther. 2019;32(6):e13090.",
-    funding: "Verify full-text funding statement before formal synthesis",
+    funding: "No funding statement reported; the authors declared no potential conflicts in the published article",
   },
   {
     id: "23732711",
@@ -98,7 +98,7 @@ const records: EvidenceRecord[] = [
     limitation: "Weight loss may have contributed; small all-male sample limits generalizability.",
     source: "https://pubmed.ncbi.nlm.nih.gov/17448569/",
     citation: "Smith RN, et al. J Am Acad Dermatol. 2007;57(2):247–256.",
-    funding: "Review the full paper for complete funding and conflict details",
+    funding: "Research grant from Meat and Livestock Australia; the funder reported no role in data collection, analysis, interpretation, or publication; the first author received a MINTRAC scholarship",
   },
   {
     id: "21822427",
@@ -114,7 +114,7 @@ const records: EvidenceRecord[] = [
     limitation: "Small sample, eight-week duration, and melasma should not be generalized to every form of hyperpigmentation.",
     source: "https://pubmed.ncbi.nlm.nih.gov/21822427/",
     citation: "Navarrete-Solís J, et al. Dermatol Res Pract. 2011:379173.",
-    funding: "Verify full-text funding statement before formal synthesis",
+    funding: "The published article did not include a funding or conflict declaration; named commercial products were used in the trial",
   },
   {
     id: "34804354",
@@ -130,7 +130,7 @@ const records: EvidenceRecord[] = [
     limitation: "Small sample and combination treatment prevent attributing outcomes to niacinamide alone.",
     source: "https://pubmed.ncbi.nlm.nih.gov/34804354/",
     citation: "Kaewsanit T, et al. J Clin Aesthet Dermatol. 2021;14(6):35–41.",
-    funding: "Verify full-text funding and conflicts before formal synthesis",
+    funding: "No funding was provided; the authors reported no conflicts relevant to the article",
   },
   {
     id: "37550898",
@@ -263,10 +263,11 @@ export default function Home() {
       <section className="hero" id="top">
         <div className="hero-copy">
           <p className="eyebrow">Student-led research · curated seed release 01</p>
-          <h1>Making skin science <em>legible.</em></h1>
+          <h1>Dermatology evidence map.</h1>
           <p className="hero-lede">
-            An evidence-mapping project that turns dermatology research into a transparent,
-            explorable dataset—without flattening uncertainty into a beauty claim.
+            Ten study-level records covering topical products, habits, diet, supplements,
+            and clinical guidance. Each record preserves design, population, outcome,
+            limitation, source, and disclosure context.
           </p>
           <div className="hero-actions">
             <a className="primary-button" href="#evidence">Explore verified records <span>↓</span></a>
@@ -301,8 +302,8 @@ export default function Home() {
       <section className="section evidence-section" id="evidence">
         <div className="section-heading">
           <div>
-            <p className="eyebrow">Evidence library</p>
-            <h2>Interrogate the record,<br />not the headline.</h2>
+            <p className="eyebrow">10 source-linked records</p>
+            <h2>Evidence library</h2>
           </div>
           <p>
             Each card is a structured research record. Ratings describe confidence in this
@@ -337,31 +338,81 @@ export default function Home() {
       </section>
 
       <section className="section case-study" id="case-study">
-        <div className="case-copy">
-          <p className="eyebrow">Case study 01 · Ceramides</p>
-          <h2>From barrier biology to a testable claim.</h2>
-          <p className="large-copy">
-            Ceramides are lipids in the stratum corneum matrix. A credible question is not
-            “Do ceramides work?” but “Which formulation, in which population, against which
-            comparator, measured with which outcome?”
-          </p>
-          <div className="research-question">
-            <span>Focused question</span>
-            <p>In adults with dry or eczema-prone skin, do ceramide-containing moisturizers improve TEWL or hydration compared with a vehicle or basic moisturizer?</p>
+        <div className="case-intro">
+          <div>
+            <p className="eyebrow">Case study 01 · Ceramides</p>
+            <h2>Ceramide moisturizers and skin-barrier outcomes</h2>
+          </div>
+          <div className="case-question-block">
+            <p className="large-copy">
+              Ceramides are part of the stratum corneum lipid matrix. This case study tests
+              a narrow claim about complete moisturizer regimens, measured in people rather
+              than inferred from ingredient biology alone.
+            </p>
+            <div className="research-question">
+              <span>Focused question</span>
+              <p>In adults with dry or eczema-prone skin, do ceramide-containing moisturizers improve TEWL or hydration compared with a vehicle or basic moisturizer?</p>
+            </div>
           </div>
         </div>
+
+        <div className="case-trials" aria-label="Ceramide trial comparison">
+          <article className="trial-card">
+            <div className="trial-topline"><span>Trial A</span><strong>2019 · PMID 31585489</strong></div>
+            <h3>Split-site xerosis trial</h3>
+            <dl>
+              <div><dt>Participants</dt><dd>24 adults aged 50–70 with mild-to-moderate xerosis</dd></div>
+              <div><dt>Comparison</dt><dd>Ceramide moisturizer on one shin; hydrophilic cream on the other</dd></div>
+              <div><dt>Follow-up</dt><dd>Single-use testing, 28 days of use, and a 7-day post-use check</dd></div>
+              <div><dt>Result</dt><dd>Hydration, TEWL, and skin pH favored the ceramide formulation</dd></div>
+              <div><dt>Disclosure</dt><dd>No funding statement; authors declared no potential conflicts</dd></div>
+            </dl>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/31585489/" target="_blank" rel="noreferrer">Open source record <ArrowIcon /></a>
+          </article>
+
+          <article className="trial-card">
+            <div className="trial-topline"><span>Trial B</span><strong>2021 · PMID 33984185</strong></div>
+            <h3>Parallel-group eczema trial</h3>
+            <dl>
+              <div><dt>Participants</dt><dd>100 adults with moderate eczema; 50 assigned to each group</dd></div>
+              <div><dt>Comparison</dt><dd>Ceramide cream plus cleanser versus matched placebo regimen</dd></div>
+              <div><dt>Follow-up</dt><dd>28 days; 83 participants completed the trial</dd></div>
+              <div><dt>Result</dt><dd>Barrier measures improved, but day-28 EASI severity did not differ between groups</dd></div>
+              <div><dt>Disclosure</dt><dd>Manufacturer-sponsored; six authors were sponsor employees</dd></div>
+            </dl>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/33984185/" target="_blank" rel="noreferrer">Open source record <ArrowIcon /></a>
+          </article>
+        </div>
+
+        <div className="case-analysis">
+          <article>
+            <span>What the seed supports</span>
+            <p>Two short controlled trials support improved instrument-measured hydration or water-loss outcomes for the specific formulations studied.</p>
+          </article>
+          <article>
+            <span>What remains unresolved</span>
+            <p>The records do not establish that every ceramide product performs equally, that ceramide alone caused the effect, or that barrier changes guarantee long-term clinical improvement.</p>
+          </article>
+          <article>
+            <span>Data-science decision</span>
+            <p>The schema keeps regimen, comparator, population, outcome, limitation, and disclosure separate instead of assigning one yes-or-no ingredient verdict.</p>
+          </article>
+        </div>
+
         <div className="barrier-model">
-          <div className="model-label">Conceptual pathway</div>
-          {[
-            ["01", "Topical application", "A complete formulation reaches the outer skin"],
-            ["02", "Lipid organization", "Ceramide-containing systems may support matrix structure"],
-            ["03", "Barrier measures", "Trials assess TEWL, hydration, symptoms, and tolerability"],
-            ["04", "Cautious inference", "Product evidence does not prove an isolated ingredient effect"],
-          ].map(([n, title, copy]) => (
-            <div className="model-step" key={n}>
-              <span>{n}</span><div><strong>{title}</strong><p>{copy}</p></div>
-            </div>
-          ))}
+          <div className="model-label">How the claim is evaluated</div>
+          <div className="model-steps">
+            {[
+              ["01", "Define", "Specify population, complete regimen, comparator, and follow-up"],
+              ["02", "Measure", "Separate TEWL, hydration, symptoms, severity, and tolerability"],
+              ["03", "Compare", "Read between-group results rather than baseline change alone"],
+              ["04", "Bound", "Limit the conclusion to the tested formulas and populations"],
+            ].map(([n, title, copy]) => (
+              <div className="model-step" key={n}>
+                <span>{n}</span><div><strong>{title}</strong><p>{copy}</p></div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -369,7 +420,7 @@ export default function Home() {
         <div className="section-heading method-heading">
           <div>
             <p className="eyebrow">Research + data science</p>
-            <h2>A reproducible workflow,<br />not a mystery score.</h2>
+            <h2>Methods</h2>
           </div>
           <p>Built from the original Python/pandas prototype, redesigned around study-level provenance and honest uncertainty.</p>
         </div>
@@ -409,14 +460,24 @@ export default function Home() {
 
       <section className="section about" id="about">
         <div className="about-card">
-          <p className="eyebrow">Student researcher statement</p>
-          <h2>I built this to learn how evidence becomes data—and how data can mislead when context disappears.</h2>
+          <p className="eyebrow">About the project</p>
+          <h2>Student-led dermatology evidence mapping</h2>
           <p>
-            This project began as a Streamlit dashboard using Python, pandas, and Plotly. The
-            research-platform edition adds a study-level schema, direct provenance, conflict and
-            limitation fields, a documented confidence rubric, and a public interface designed
-            for independent checking. My next milestones are dual-reviewer extraction, a published
-            search protocol, risk-of-bias assessment, and versioned dataset releases.
+            I designed and built this project to study how dermatology claims can be converted
+            into structured, inspectable data. I framed the research questions, selected the seed
+            literature, extracted study-level fields, documented limitations and disclosures,
+            and developed the public interface.
+          </p>
+          <div className="about-responsibilities">
+            <article><span>Research</span><p>Question framing, source selection, manual extraction, and cautious interpretation.</p></article>
+            <article><span>Data science</span><p>Schema design, controlled categories, validation rules, filtering, and comparative summaries.</p></article>
+            <article><span>Development</span><p>Python/pandas prototype followed by an accessible React and Next.js research interface.</p></article>
+          </div>
+          <p className="accountability-note">
+            <strong>Scope and accountability.</strong> This is a curated educational seed set,
+            not a systematic review or clinical tool. The work has not yet received independent
+            extraction or dermatologist review. Planned extensions include a published search
+            protocol, duplicate screening, formal risk-of-bias assessment, and versioned releases.
           </p>
           <div className="about-tags"><span>Python</span><span>pandas</span><span>Evidence synthesis</span><span>Data visualization</span><span>Research ethics</span></div>
         </div>
@@ -424,7 +485,7 @@ export default function Home() {
           <span className="release-label">Release notes</span>
           <strong>Seed 01</strong>
           <dl>
-            <div><dt>Literature checked</dt><dd>22 Aug 2026</dd></div>
+            <div><dt>Literature checked</dt><dd>25 Aug 2026</dd></div>
             <div><dt>Record status</dt><dd>Source-linked</dd></div>
             <div><dt>Expert review</dt><dd>Not yet completed</dd></div>
             <div><dt>Medical use</dt><dd>Not appropriate</dd></div>
